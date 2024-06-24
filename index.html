@@ -478,59 +478,40 @@
 
           <div class="col-lg-6">
 
-            <div class="form-container">
+            <div class="form">
+
               <h4>Send us a message</h4>
               <p>We will contact you soon.</p>
-              <form id="contactForm" action="contactform.php" method="POST" role="form" class="contactForm">
+              <form action="https://formspree.io/f/xrbzzlbn" method="post" role="form" class="contactForm">
                   <div class="form-group">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required />
-                  </div>
-                  <div class="form-group">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required />
-                  </div>
-                  <div class="form-group">
-                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required />
+                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name"
+                    data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                      <div class="validation"></div>
                   </div>
                   <div class="form-group">
-                      <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email"
+                    data-rule="email" data-msg="Please enter a valid email" />
+                      <div class="validation"></div>
                   </div>
-                  <div class="text-center">
-                      <button type="submit" title="Send Message">Send Message</button>
+                  <div class="form-group">
+                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject"
+                    data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                      <div class="validation"></div>
                   </div>
+                  <div class="form-group">
+                      <textarea class="form-control" name="message" rows="5" data-rule="required"
+                    data-msg="Please write something for us" placeholder="Message"></textarea>
+                      <div class="validation"></div>
+                  </div>
+      
+                <div id="sendmessage">Your message has been sent. Thank you!</div>
+                <div id="errormessage"></div>
+      
+                  <div class="text-center"><button type="submit" title="Send Message">Send Message</button></div>
               </form>
-              <div id="submission-message" style="display: none; color: green; text-align: center; margin-top: 10px;">
-                  We have received your message. We will contact you soon.
-              </div>
           </div>
       
-          <script>
-              $(document).ready(function() {
-                  $('#contactForm').submit(function(event) {
-                      event.preventDefault(); // Prevent the default form submission
-      
-                      var form = $(this);
-                      var url = form.attr('action');
-      
-                      $.ajax({
-                          type: "POST",
-                          url: url,
-                          data: form.serialize(),
-                          success: function(response) {
-                              if (response == 'OK') {
-                                  form.hide();
-                                  $('#submission-message').show();
-                              } else {
-                                  alert('There was an error sending your message.');
-                              }
-                          },
-                          error: function() {
-                              alert('There was an error sending your message.');
-                          }
-                      });
-                  });
-              });
-          </script>
-      
+          </div>
 
 
 
