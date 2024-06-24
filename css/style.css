@@ -938,14 +938,14 @@ h6 {
 
 }
 
-#team .member {
+@media (max-width:600){#team .member {
   text-align: center;
   margin-bottom: 20px;
   position: relative;
   overflow: hidden;
   
 }
-
+}
 @media (min-width:600px){
   #team .member {
     text-align: center;
